@@ -4,30 +4,27 @@ using namespace std;
 
 void countFreq(int arr[],int n)
 {
-   vector<bool> visited(n,false);
+   unordered_map<int,int> map;
+
    int maxFreq = 0, minFreq = n;
    int maxEle = 0, minEle = 0;
 
    for (int i = 0; i < n; i++){
-
-    if (visited[i] == true)
-    continue;
-
-    int count=1;
-    for(int j = 1+i ; j< n; j++){
-        if (arr[i] == arr[j]) {
-            visited[j] = true;
-            count++;
+        map[arr[i]]++;
         }
-    }
+    for (auto it : map){
+        int count = it.second;
+        int element = it.first;
+    }    
+
        if(count>maxFreq){
         maxFreq = count;
-        maxEle = arr[i];
+        maxEle = element;
        }
 
        if (count< minFreq){
         minFreq = count;
-        minEle = arr[i];
+        minEle = element;
        }
 
    }
